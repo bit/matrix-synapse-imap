@@ -23,5 +23,6 @@ Example Synapse config:
 
 The ``create_users``-key specifies whether to create Matrix accounts
 for valid system accounts.
+
 The ``server``-key specifies the name of the imap server, it must support SSL connections.
 

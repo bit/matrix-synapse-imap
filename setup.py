@@ -14,14 +14,23 @@
 
 from setuptools import setup
 
+
+def read_file(path):
+    with open(path) as f:
+        return f.read()
+
+
 setup(
     name="matrix-synapse-imap",
-    version="0.0.1",
+    version="0.0.2",
     py_modules=['imap_auth_provider'],
     install_requires=[
         "Twisted>=15.1.0",
     ],
+    author="Jan Gerber",
+    author_email="j@mailb.org",
     description="IMAP auth provider for Synapse",
+    long_description=read_file("README.rst"),
     url="https://github.com/bit/matrix-synapse-imap",
     classifiers=[
         'Development Status :: 4 - Beta',
