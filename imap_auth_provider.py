@@ -63,7 +63,7 @@ class IMAPAuthProvider:
 
         # Create the user in Matrix if it doesn't exist yet
         if not (yield self.account_handler.check_user_exists(user_id)):
-            yield self.account_handler.register_user(localpart=localpart, mail=[email])
+            yield self.account_handler.register_user(localpart=localpart, emails=[email])
 
         defer.returnValue(True)
 
