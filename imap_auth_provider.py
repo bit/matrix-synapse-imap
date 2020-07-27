@@ -26,6 +26,7 @@ class IMAPAuthProvider:
         self.create_users = config.create_users
         self.server = config.server
         self.port = config.port
+        self.plainuid = config.plainuserid
 
     @defer.inlineCallbacks
     def check_password(self, user_id, password):
@@ -38,15 +39,22 @@ class IMAPAuthProvider:
         if not password:
             defer.returnValue(False)
 
-        # user_id is of the form @foo:bar.com
         localpart = user_id.split(":", 1)[0][1:]
         email = '@'.join(user_id[1:].split(':'))
 
-        logger.debug("Trying to login as %s on %s:%d via IMAP", email, self.server, self.port)
+        if self.plainuid:
+            loginuid = "wegjd" 
+            logger.info(">>>login: %s ", loginuid)
+        else:
+            # user_id is of the form @foo:bar.com
+            loginuid =  email
+
+
+        logger.debug("Trying to login as %s on %s:%d via IMAP", loginuid, self.server, self.port)
 
         try:
             M = imaplib.IMAP4_SSL(self.server, self.port)
-            r = M.login(email, password)
+            r = M.login(loginuid, password)
             if r[0] == 'OK':
                 M.logout()
         except:
@@ -73,4 +81,5 @@ class IMAPAuthProvider:
         imap_config.create_users = config.get('create_users', True)
         imap_config.server = config.get('server', '')
         imap_config.port = config.get('port', imaplib.IMAP4_SSL_PORT)
+        imap_config.plainuserid = config.get('plainuserid', False)
         return imap_config
