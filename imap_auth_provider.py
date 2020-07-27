@@ -43,7 +43,7 @@ class IMAPAuthProvider:
         email = '@'.join(user_id[1:].split(':'))
 
         if self.plainuid:
-            loginuid = "wegjd" 
+            loginuid = localpart
             logger.info(">>>login: %s ", loginuid)
         else:
             # user_id is of the form @foo:bar.com
