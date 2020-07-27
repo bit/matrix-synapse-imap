@@ -44,7 +44,6 @@ class IMAPAuthProvider:
 
         if self.plainuid:
             loginuid = localpart
-            logger.info(">>>login: %s ", loginuid)
         else:
             # user_id is of the form @foo:bar.com
             loginuid =  email
