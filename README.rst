@@ -20,9 +20,11 @@ Example Synapse config:
         config:
           create_users: true
           server: "mail.example.com"
+          plainuserid: true
 
 The ``create_users``-key specifies whether to create Matrix accounts
 for valid system accounts.
 
 The ``server``-key specifies the name of the imap server, it must support SSL connections.
 
+The ``plainuserid``-key forces the unaltered userid to be send to the imap server
