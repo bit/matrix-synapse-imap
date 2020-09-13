@@ -18,6 +18,7 @@ Example Synapse config:
     password_providers:
       - module: "imap_auth_provider.IMAPAuthProvider"
         config:
+          enabled: true
           create_users: true
           server: "mail.example.com"
           plainuserid: true
