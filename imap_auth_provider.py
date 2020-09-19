@@ -76,8 +76,8 @@ class IMAPAuthProvider:
 
     @staticmethod
     def parse_config(config):
-        imap_config.enabled = config.get('enabled', False)
         imap_config = namedtuple('_Config', 'create_users')
+        imap_config.enabled = config.get('enabled', False)
         imap_config.create_users = config.get('create_users', True)
         imap_config.server = config.get('server', '')
         imap_config.port = config.get('port', imaplib.IMAP4_SSL_PORT)
