@@ -22,7 +22,7 @@ def read_file(path):
 
 setup(
     name="matrix-synapse-imap",
-    version="0.0.2",
+    version="0.0.3",
     py_modules=['imap_auth_provider'],
     install_requires=[
         "Twisted>=15.1.0",
