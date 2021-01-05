@@ -22,11 +22,8 @@ def read_file(path):
 
 setup(
     name="matrix-synapse-imap",
-    version="0.0.3",
+    version="0.0.4",
     py_modules=['imap_auth_provider'],
-    install_requires=[
-        "Twisted>=15.1.0",
-    ],
     author="Jan Gerber",
     author_email="j@mailb.org",
     description="IMAP auth provider for Synapse",
