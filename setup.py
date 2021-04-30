@@ -22,7 +22,7 @@ def read_file(path):
 
 setup(
     name="matrix-synapse-imap",
-    version="0.0.4",
+    version="0.0.5",
     py_modules=['imap_auth_provider'],
     author="Jan Gerber",
     author_email="j@mailb.org",

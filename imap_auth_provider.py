@@ -92,15 +92,14 @@ class IMAPAuthProvider:
 
         # Need to find user_id
         if not user_id:
-            if self.append_domain:
+            # Guessing domain given email domain
+            if '@' in address:
+                domain = address.split('@')[-1]
+            elif self.append_domain:
                 domain = self.append_domain
             else:
-                # Guessing domain given email domain
-                if '@' in address:
-                    domain = address.split('@')[-1]
-                else:
-                    logger.debug("No domain can be guessed for {}".format(address))
-                    return None
+                logger.debug("No domain can be guessed for {}".format(address))
+                return None
 
             logger.debug("Guessed domain for {}: {}".format(address, domain))
 
@@ -121,6 +120,8 @@ class IMAPAuthProvider:
         # We need to have a valid email address for registration
         if '@' in address:
             email = address
+        elif self.append_domain:
+            email = address + '@' + self.append_domain
         else:
             # Building the email address if `address` was not a valid email
             email = '@'.join(user_id[1:].split(':'))
